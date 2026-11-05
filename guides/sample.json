@@ -1,0 +1,15 @@
+{
+  "url": "https://designnow.ai/motion",
+  "size": [1280, 800],
+  "steps": [
+    {"caption": "モーション・UI/UXパーツカタログの使い方です", "do": "wait"},
+    {"caption": "まずは使い方の動画を隠しておきます", "do": "click", "target": "#guide-x"},
+    {"caption": "棚は4つ。モーショングラフィック・Webアニメーション・UI / UX・動画制作", "do": "point", "target": "#tabs"},
+    {"caption": "UI / UX の棚を開いてみます", "do": "click", "target": "#tab-ui"},
+    {"caption": "Webアニメーションに切り替えます", "do": "click", "target": "#tab-web"},
+    {"caption": "左のメニューで、分類を切り替えられます", "do": "click", "target": ".tg >> text=登場・文字"},
+    {"caption": "名前で探すときは、上の検索を使います", "do": "type", "target": "#q", "text": "マーカー"},
+    {"caption": "見本は、カードの上で実際に動きます", "do": "point", "target": ".lc"},
+    {"caption": "", "do": "wait", "sec": 1}
+  ]
+}
