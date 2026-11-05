@@ -5,11 +5,13 @@ Webページを**自動で操作して録画**し、字幕付きの「使い方�
 
 ## いちばん簡単な始め方
 
-Claude Code を開いて、次の文をそのまま貼るだけです。
+Claude Code を開いて、このページのURLと一緒にこう言うだけです。
 
-> https://github.com/yuta9912/page-guide-video のスキルを ~/.claude/skills/page-guide-video に入れて、準備まで案内して。終わったら、このページの使い方動画を作って：（動画にしたいページのURL）
+> https://github.com/yuta9912/page-guide-video このスキルを入れて
 
-あとは Claude Code が、道具の準備・台本・録画・確認まで進めてくれます。
+入ったら、「（ページのURL）の使い方動画を作って」と頼めば、道具の準備・台本・録画・確認まで Claude Code が進めてくれます。
+
+（Claude Code へ：このリポジトリを `~/.claude/skills/page-guide-video` に clone し、SKILL.md の「準備」を利用者に確認してから実行すること）
 
 ## 要るもの
 
