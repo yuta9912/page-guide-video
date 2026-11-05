@@ -9,16 +9,16 @@ Claude Code を開いて、このページのURLと一緒にこう言うだけ�
 
 > https://github.com/yuta9912/page-guide-video このスキルを入れて
 
-入ったら、「（ページのURL）の使い方動画を作って」と頼めば、道具の準備・台本・録画・確認まで Claude Code が進めてくれます。
+入ったら、「（ページのURL）の使い方動画を作って」と頼めば、台本・録画・確認まで Claude Code が進めてくれます。
 
 （Claude Code へ：このリポジトリを `~/.claude/skills/page-guide-video` に clone し、SKILL.md の「準備」を利用者に確認してから実行すること）
 
 ## 要るもの
 
-- Mac
-- Claude Code
-- Google Chrome
-- Python 3（Mac に入っていなければ Claude Code が案内します）
+- Mac と Google Chrome
+- Claude Code（または Codex）
+
+録画に使う道具は、AI が作業フォルダの中に自動で用意します。自分で何かをインストールする必要はありません。
 
 ## 自分で動かす場合
 

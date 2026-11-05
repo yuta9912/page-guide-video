@@ -6,6 +6,7 @@ description: Webページ・Webサービスの「使い方動画」を、撮影�
 # page-guide-video — Webページの使い方動画
 
 作業ディレクトリ: このスキルのフォルダ（`scripts/record_guide.py` がある場所）。
+DesignNOW の MCP（designnow_skill）で読んでいる場合は、`scripts/record_guide.py` と `guides/sample.json` を path 指定で受け取り、利用者のパソコンの作業フォルダ（例：`~/使い方動画/`）に同じ並びで書き出してから動かす。
 
 ## できあがるもの
 
@@ -13,15 +14,17 @@ description: Webページ・Webサービスの「使い方動画」を、撮影�
 - 黒いカーソルが動き、押す所に**青い丸**、見てほしい所に**オレンジの枠**が出る
 - 画面の下に**字幕**（声は入らない）
 
-## 準備（初回だけ・利用者の Mac）
+## 準備（AIが自動でやる。利用者に「入れてください」と頼まない）
+
+録画の道具は、**作業フォルダの中だけ**に自動で用意する。Mac のアプリや設定には触らないので、利用者に許可を求めたり、インストールをお願いしたりしない。2回目からはこの手順はいらない（`.venv` があれば飛ばす）。
 
 ```bash
-python3 -m pip install playwright imageio-ffmpeg
-python3 -m playwright install ffmpeg
+cd ~/使い方動画 && [ -x .venv/bin/python ] || (python3 -m venv .venv && .venv/bin/pip install -q playwright imageio-ffmpeg && .venv/bin/python -m playwright install ffmpeg)
 ```
 
-- Google Chrome があればそれで録画する。無い場合だけ `python3 -m playwright install chromium`
-- 入れる前に利用者に「入れてよいか」を一言聞く
+- 以後のコマンドは `python3` ではなく `.venv/bin/python` で動かす
+- 録画は利用者の Google Chrome を使う。Chrome が無いときだけ `.venv/bin/python -m playwright install chromium` も作業フォルダ用に入れる
+- `python3` 自体が無い Mac（まれ）のときだけ、利用者に「Xcode のコマンドラインツールを入れてください（画面の案内で「インストール」を押すだけ）」と1行で伝える
 
 ## 進め方
 
@@ -29,10 +32,10 @@ python3 -m playwright install ffmpeg
    - ログインが要るページは、ログイン不要の公開ページで作るか、利用者に相談する。パスワードを台本に書かない
 2. **ページを見る**：実際に開いて、押すボタン・見せたい場所の見分け方（`#id`・`text=ボタンの文字`・CSSセレクタ）を調べる
 3. **台本を書く**：`guides/<名前>.json`。書き方は `scripts/record_guide.py` の先頭と `guides/sample.json`
-4. **録画**：`python3 scripts/record_guide.py guides/<名前>.json` → `out/<名前>.mp4`
+4. **録画**：`.venv/bin/python scripts/record_guide.py guides/<名前>.json` → `out/<名前>.mp4`
 5. **確かめる**：数秒おきのコマを1枚に並べて見る。字幕が画面の大事な所に重なっていないか、押した結果が画面に出ているか、字幕と画面の内容が合っているか
    ```bash
-   python3 -c "import imageio_ffmpeg,subprocess,sys;subprocess.run([imageio_ffmpeg.get_ffmpeg_exe(),'-y','-i','out/<名前>.mp4','-vf','fps=1/4,scale=640:-1,tile=3x3','-frames:v','1','out/<名前>_check.png'])"
+   .venv/bin/python -c "import imageio_ffmpeg,subprocess,sys;subprocess.run([imageio_ffmpeg.get_ffmpeg_exe(),'-y','-i','out/<名前>.mp4','-vf','fps=1/4,scale=640:-1,tile=3x3','-frames:v','1','out/<名前>_check.png'])"
    ```
 6. **渡す**：mp4 の場所と長さを伝える。直したい所を聞いて、台本を直して録り直す
 
